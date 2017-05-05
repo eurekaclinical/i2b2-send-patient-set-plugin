@@ -1,0 +1,80 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<!--
+  #%L
+  i2b2 Send Patient Set Plugin
+  %%
+  Copyright (C) 2015 - 2016 Emory University
+  %%
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+  
+       http://www.apache.org/licenses/LICENSE-2.0
+  
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+  #L%
+  -->
+
+<html>
+	<head>
+		<title>Performing Action...</title>
+	</head>
+	<body>
+		<p>Sending patient set...</p>
+		<script type="text/javascript" src="prototype-1.7.3.js"></script>
+		<script type="text/javascript">
+			window.opener.i2b2.PM.getEurekaClinicalSession(window.opener.i2b2.PatientSetSender.SERVICE_URL, {
+				onSuccess: function (response) {
+					new Ajax.Request(window.opener.i2b2.PatientSetSender.SERVICE_URL + '/proxy-resource/patientset', {
+						method: 'get',
+						dataType: 'json',
+						asynchronous: true,
+						parameters: {
+							resultInstanceId: window.opener.i2b2.PatientSetSender.model.prsRecord.sdxInfo.sdxKeyValue,
+							action: Element.select(window.opener.document, "DIV#Dem1Set-mainDiv DIV#Dem1Set-TABS DIV#Dem1Set-SelectDest SELECT")[0].getValue()
+						},
+						onSuccess: function (response) {
+							if (!response.responseText) {
+								Element.select(window.opener.document, "DIV#Dem1Set-mainDiv DIV#Dem1Set-TABS DIV.results-working")[0].hide();
+								Element.select(window.opener.document, "DIV#Dem1Set-mainDiv DIV#Dem1Set-TABS DIV.results-finished")[0].show();
+								Element.select(window.opener.document, "DIV#Dem1Set-mainDiv DIV#Dem1Set-TABS DIV.results-finished")[0].innerHTML = "Action failed.";
+							} else {
+								var patientSet = JSON.parse(response.responseText);
+								var theObj = window.opener.i2b2.PatientSetSender.contextualize(patientSet);
+								document.body.innerHTML = "<form id=\"patientSetSenderForm\" method=\"POST\" action=\"" + window.opener.i2b2.PatientSetSender.selectedReceiverUrl + "\"></form>";
+								var theForm = $("patientSetSenderForm");
+								for (var propt in theObj) {
+									if (theObj.hasOwnProperty(propt)) {
+										theForm.insert("<input type='hidden' name='" + propt + "' value='" + theObj[propt].escapeHTML() + "'></input>");
+									}
+								}
+								$("patientSetSenderForm").submit();
+							}
+						},
+						onFailure: function (response) {
+							Element.select(window.opener.document, "DIV#Dem1Set-mainDiv DIV#Dem1Set-TABS DIV.results-working")[0].hide();
+							Element.select(window.opener.document, "DIV#Dem1Set-mainDiv DIV#Dem1Set-TABS DIV.results-finished")[0].show();
+							Element.select(window.opener.document, "DIV#Dem1Set-mainDiv DIV#Dem1Set-TABS DIV.results-finished")[0].innerHTML = "Action failed: " + response.responseText + ".";
+						},
+						onComplete: function (response) {
+							window.opener.i2b2.PatientSetSender.model.dirtyResultsData = false;
+							new Ajax.Request(window.opener.i2b2.PatientSetSender.SERVICE_URL + '/destroy-session', {
+								method: 'get',
+								onComplete: function (response) {
+								}
+							});
+						}
+					})
+				},
+				onFailure: function (response) {
+					alert('The results from the server could not be understood.  Press F12 for more information.');
+					console.error("Bad Results from Cell Communicator: ", response);
+				}
+		});
+		</script>
+	</body>
+</html>

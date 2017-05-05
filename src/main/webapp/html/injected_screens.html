@@ -1,0 +1,75 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<!--
+  #%L
+  i2b2 Send Patient Set Plugin
+  %%
+  Copyright (C) 2015 - 2016 Emory University
+  %%
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+  
+       http://www.apache.org/licenses/LICENSE-2.0
+  
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+  #L%
+  -->
+
+<html>
+	<body>
+		<div id='Dem1Set-mainDiv'>
+			<div id="Dem1Set-TABS" class="yui-navset">
+				<ul class="yui-nav">
+					<li id="Dem1Set-TAB0" class="selected"><a href="#Dem1Set-TAB0"><em>Select Patient Set</em></a></li>
+					<li id="Dem1Set-TAB1"><a href="#Dem1Set-TAB1"><em>View Results</em></a></li>
+					<li id="Dem1Set-TAB2"><a href="#Dem1Set-TAB2"><em>Plugin Help</em></a></li>
+				</ul>
+				<div class="yui-content" id="Dem1Set-CONTENT">
+					<div id="Dem1Set-Main">
+						<div class="Dem1Set-MainContent">
+							<div class="Dem1Set-MainContentPad">
+								<div>Drop a Patient Set into the input box below, select an action, and then click the "View Results" tab to perform the selected action on the selected patient set.</div>
+								<div class="droptrgtlbl">Patient Set:</div>
+								<div class="droptrgt SDX-PRS" id="Dem1Set-PRSDROP">Drop a Patient Set here</DIV>
+								<div>Select an action.</div>
+								<div id="Dem1Set-SelectDest">
+								</div>
+							</div>
+						</div>
+					</div>
+					<div  id="Dem1Set-Main">
+						<div class="Dem1Set-MainContent">
+							<div class="results-directions">Please return to the Select Patient Set tab and select a patient set.</div>
+							<div class="results-working" style="display:none;">Please wait while the request is being sent...</div>
+							<div class="results-finished" style="display:none;"></div>
+						</div>
+					</div>
+					<div  id="Dem1Set-Main">
+						<div class="Dem1Set-MainContent">
+							<div class="Dem1Set-MainContentPad">
+								<h1>Patient Set Sender</h1>
+								<hr size="1" noshade>
+								<h2>Introduction</h2>
+								Performs an action on an i2b2 patient set.
+								<h2>Instructions</h2>
+								<ol>
+									<li>Navigate to the Select Patient Set tab.
+									<li>Drag and drop a patient set from Previous Queries or the Workplace onto the input box.
+									<li>Click the View Results tab to perform the selected action on the selected patient set.
+								</ol>
+								<h2>About Us</h2>
+								This plugin was created by the Eureka! Clinical Analytics team at Emory University, Atlanta, GA.
+								<h2>Terms of Use</h2>
+								This plugin is distributed as open source under the Apache License, Version 2.0.
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
