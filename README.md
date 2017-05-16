@@ -11,7 +11,7 @@ web service that routes requests from the plugin to the appropriate i2b2 cell,
 as well as providing authentication.
 
 ## Version 1.0 development series
-Latest release: [![Latest release](https://maven-badges.herokuapp.com/maven-central/org.eurekaclinical/eurekaclinical-user-webapp/badge.svg)](https://maven-badges.herokuapp.com/maven-central/org.eurekaclinical/eurekaclinical-user-webapp)
+This plugin was originally developed as part of the [i2b2-eureka](https://github.com/eurekaclinical/i2b2-eureka) project. We have split that project's modules into separate projects, including the send patient set plugin.
 
 ## Version history
 No final releases yet
