@@ -34,7 +34,7 @@ i2b2 plugin list.
 3) In `cell_config_data.js`, find the 'config' map and the 'category' key. Change
 the last value of the 'category' array to be `$CUSTOM_PLUGIN_DIR`.
 
-4) Inside $CUSTOM_PLUGIN_DIR, create a new directory, `PatientSetSender`.
+4) Inside `$CUSTOM_PLUGIN_DIR`, create a new directory, `PatientSetSender`.
 
 5) Copy the entire directory and its contents into the `PatientSetSender` directory.
 
