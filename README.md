@@ -63,8 +63,6 @@ where `$CUSTOM_PLUGIN_DIR` is the name of the directory you created in step 2
 (where the plugin was copied to). Where you place this block determines the
 order in which the plugin is displayed in the i2b2 plugin list.
 
-This completes the installation of the i2b2 Export plugin.
-
 For more information about i2b2 plugins, see:
 https://community.i2b2.org/wiki/display/webclient/Web+Client+Plug-in+Developers+Guide.
 
