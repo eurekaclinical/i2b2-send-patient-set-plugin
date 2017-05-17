@@ -21,7 +21,7 @@ No final releases yet
 * The [Eureka! Clinical i2b2 Integration webapp](https://github.com/euerkaclinical/eurekaclinical-i2b2-integration-webapp) running on the same server.
   
 ## Installation
-These instructions assume your i2b2 installation is rooted at `/var/www/html/webclient`.
+These instructions assume your i2b2 web client installation is rooted at `/var/www/html/webclient`.
 This location will be referred to as `$I2B2_ROOT`.
 
 1) Locate your i2b2 installation's plugins directory: `$I2B2_ROOT/js-i2b2/cells/plugins`.
