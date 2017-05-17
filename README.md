@@ -48,9 +48,13 @@ variable to the URL of Eureka Webapp.
 variable to the display name of where to send patient set.
 
 9) In PatientSetSender_config.js, change the value of `i2b2.PatientSetSender.RECEIVER_SEND_URL`
-variable to URL of the receiving service that implements the Eureka! Clinical patient set REST API.
+variable to URL of the receiving service.
 
-10) Modify `$I2B2_ROOT/js-i2b2/i2b2_loader.js` to add the plugin to the list of
+10) If needed, change the JSON output shape by setting `i2b2.PatientSetSender.contextualize` to
+a function that returns the required structure. The default structure assumes that you are
+sending patient sets to a service that implements the Eureka! Clinical patient set REST API.
+
+11) Modify `$I2B2_ROOT/js-i2b2/i2b2_loader.js` to add the plugin to the list of
 plugins. Add the following JavaScript map to the `i2b2.hive.tempCellsList` array:
 ```
  { code: "PatientSetSender",
